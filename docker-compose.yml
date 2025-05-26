@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgresCourseWork
+    ports: 
+    - "5432:5432"
+    environment:    
+      POSTGRES_USER: untrick
+      POSTGRES_PASSWORD: 4thtgeirf_2001
+      POSTGRES_DB: dbTournaments
+    volumes: 
+    - postgres_data:/var/lib/postgresql/data
+  pgAdmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgAdminCourseWork
+    ports: 
+    - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com 
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes: 
+    - pgadmin_data:/var/lib/pgadmin   
+    depends_on: 
+    - postgres
+volumes:
+  postgres_data:
+  pgadmin_data:
